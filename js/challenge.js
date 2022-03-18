@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     minusButton()
     heartButton()
     pauseButton()
+    commentButton()
 })
 
 //get the timer to start
@@ -101,15 +102,35 @@ function addCounter(){
 //add click event listener which will change the inner text of the pause button to resume 
 
 function pauseButton(){
-    const pause = document.getElementById('pause')
-    pause.addEventListener('click', () => {
-        if(pause.innerText === "pause"){
-            pause.innerText = "resume"
+    const pauseBtn = document.getElementById('pause')
+    pauseBtn.addEventListener('click', () => {
+        if(pauseBtn.innerText === "pause"){
+            //how do i disable ALL buttons? 
+            // let allButtons = document.querySelectorAll("button")
+            console.log("ALL BUTTONS", allButtons)
+            pauseBtn.innerText = "resume"
             clearInterval(timerID)
         } else {
-            pause.innerText = "pause"
-            setTimeout(addCounter,1000)
+            pauseBtn.innerText = "pause"
+            timerID = setInterval(addCounter, 1000)
             
         }
+    })
+}
+
+function commentButton(){
+    const commentForm = document.getElementById("comment-form")
+    commentForm.addEventListener('submit', (e) => {
+        console.log(e.target[0].value)
+        e.preventDefault()
+
+        const commentList = document.getElementById('list')
+        const pComment = document.createElement('p')
+        pComment.textContent = e.target[0].value
+
+
+
+        commentList.append(pComment)
+        commentForm.reset()
     })
 }
