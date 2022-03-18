@@ -106,8 +106,15 @@ function pauseButton(){
     pauseBtn.addEventListener('click', () => {
         if(pauseBtn.innerText === "pause"){
             //how do i disable ALL buttons? 
-            // let allButtons = document.querySelectorAll("button")
-            console.log("ALL BUTTONS", allButtons)
+            const allButtons = Array.from(document.querySelectorAll("button"))
+            // console.log(allButtons)
+            allButtons.forEach(button => {
+                if(button.id != "pause"){
+                    button.disabled = true
+                } else {
+                    button.disabled = false
+                }
+            })
             pauseBtn.innerText = "resume"
             clearInterval(timerID)
         } else {
