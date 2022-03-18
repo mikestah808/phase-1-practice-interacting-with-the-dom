@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     minusButton()
     heartButton()
     pauseButton()
+    commentButton()
 })
 
 //get the timer to start
@@ -111,5 +112,23 @@ function pauseButton(){
             setTimeout(addCounter,1000)
             
         }
+    })
+}
+
+function commentButton(){
+    const commentForm = document.getElementById("comment-form")
+    commentForm.addEventListener('submit', (e) => {
+        console.log(e.target[0].value)
+        e.preventDefault()
+
+        const commentList = document.getElementById('list')
+        const pComment = document.createElement('p')
+
+        
+
+        commentList.append(pComment)
+
+        //get access to 
+
     })
 }
